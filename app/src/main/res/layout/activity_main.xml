@@ -60,8 +60,8 @@
                 android:backgroundTint="#d4af37"/>
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:src="@drawable/outline_person_outline_24"
                 app:backgroundTint="@android:color/transparent"/>
 
@@ -228,6 +228,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginTop="12dp"
         tools:listitem="@layout/item_producto"/>
 
 </LinearLayout>
