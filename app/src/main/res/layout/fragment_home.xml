@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:padding="10dp">
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,13 +57,16 @@
                 app:icon="@drawable/outline_add_24"
                 app:iconGravity="textStart"
                 android:layout_marginEnd="12dp"
-                android:backgroundTint="#d4af37"/>
+                android:backgroundTint="#d4af37"
+                android:textColor="?attr/colorOnSurface"
+                app:iconTint="?attr/colorOnSurface"/>
 
             <ImageButton
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@drawable/outline_person_outline_24"
-                app:backgroundTint="@android:color/transparent"/>
+                app:backgroundTint="@android:color/transparent"
+                app:tint="?attr/colorOnSurface"/>
 
         </LinearLayout>
 
@@ -90,7 +94,8 @@
                         android:layout_height="wrap_content"
                         tools:text="Productos"
                         android:drawablePadding="6dp"
-                        app:drawableStartCompat="@drawable/outline_person_outline_24" />
+                        app:drawableStartCompat="@drawable/outline_person_outline_24"
+                        app:drawableTint="?attr/colorOnSurface"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -121,6 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:drawableStartCompat="@drawable/outline_person_outline_24"
+                        app:drawableTint="?attr/colorOnSurface"
                         tools:text="Valor total"
                         android:drawablePadding="6dp"/>
 
@@ -152,6 +158,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:drawableStartCompat="@drawable/outline_person_outline_24"
+                        app:drawableTint="?attr/colorOnSurface"
                         tools:text="Alertas"
                         android:drawablePadding="6dp"/>
 
@@ -176,14 +183,16 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <Button
-                style="@style/ButtonHomeScreen"
+                style="@style/ButtonBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="todos" />
@@ -195,7 +204,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/ButtonHomeScreen"
+                style="@style/ButtonBlack"
                 tools:text="carteras" />
 
             <Space
@@ -206,7 +215,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="bolsas"
-                style="@style/ButtonHomeScreen"/>
+                style="@style/ButtonBlack"/>
 
             <Space
                 android:layout_width="8dp"
@@ -216,7 +225,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="cinturones"
-                style="@style/ButtonHomeScreen"/>
+                style="@style/ButtonBlack"/>
 
         </LinearLayout>
 
@@ -228,6 +237,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginTop="12dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         tools:listitem="@layout/item_producto"/>
 
 </LinearLayout>
