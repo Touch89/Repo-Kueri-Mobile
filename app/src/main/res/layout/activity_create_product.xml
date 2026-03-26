@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Crear Producto"
+        android:text="Crear Producto"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginBottom="32dp"/>
@@ -32,7 +32,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtbx_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/gold_dark"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -47,7 +48,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtbx_img"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/gold_dark"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +63,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtbx_desc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/gold_dark"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +79,8 @@
                 android:id="@+id/txtbx_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"/>
+                android:inputType="numberDecimal"
+                app:boxStrokeColor="@color/gold_dark"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,7 +95,8 @@
                 android:id="@+id/txtbx_sku"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapCharacters"/>
+                android:inputType="textCapCharacters"
+                app:boxStrokeColor="@color/gold_dark"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/ButtonBlack"
-        tools:text="Enviar"
+        android:text="Enviar"
         android:textSize="18sp"
         android:layout_marginTop="32dp"/>
 

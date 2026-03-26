@@ -73,7 +73,6 @@ class CreateProduct : AppCompatActivity() {
         sendButton.setOnClickListener { _ ->
             if (validarCampos()){
                 crearProducto()
-                finish()
             }
         }
     }
@@ -124,9 +123,10 @@ class CreateProduct : AppCompatActivity() {
         val producto = ProductRequest(
             nombre = nameInputLayout.text.toString(),
             descripcion = descInputLayout.text.toString(),
-            imagen = imgInputLayout.text.toString(),
+            imagen_url = imgInputLayout.text.toString(),
             precio = priceInputLayout.text.toString().toFloat(),
-            sku = skuInputLayout.text.toString()
+            sku = skuInputLayout.text.toString(),
+            stock = 20
         )
 
         lifecycleScope.launch {
