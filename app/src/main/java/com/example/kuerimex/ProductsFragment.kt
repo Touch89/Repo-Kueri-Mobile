@@ -1,10 +1,12 @@
 package com.example.kuerimex
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.example.kuerimex.databinding.FragmentProductsBinding
 
 class ProductsFragment : Fragment() {
@@ -22,5 +24,16 @@ class ProductsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val createProduct = view.findViewById<Button>(R.id.create_product)
+
+        createProduct.setOnClickListener { _ ->
+            val intent = Intent(requireContext(), CreateProduct::class.java)
+            startActivity(intent)
+        }
     }
 }

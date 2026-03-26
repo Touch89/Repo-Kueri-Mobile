@@ -11,6 +11,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="36sp"
+        android:layout_marginBottom="12dp"
         android:text="Productos" />
+
+    <Button
+        android:id="@+id/create_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear Producto"
+        android:textSize="18sp"
+        style="@style/ButtonBlack"/>
 
 </LinearLayout>
