@@ -22,79 +22,83 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Nombre"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-
-        <EditText
-            android:id="@+id/txtbx_name"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese el nombre"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp"
+            android:hint="Nombre">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Imagen"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtbx_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/txtbx_img"
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese el link de la imágen"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp"
+            android:hint="Imagen">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Descripción"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtbx_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/txtbx_desc"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese la descripción"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp"
+            android:hint="Descripción">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Precio"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtbx_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/txtbx_price"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese el precio"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp"
+            android:hint="Precio">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="SKU"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtbx_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"/>
 
-        <EditText
-            android:id="@+id/txtbx_sku"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_sku"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese el SKU"/>
+            android:layout_marginBottom="12dp"
+            android:hint="SKU">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtbx_sku"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapCharacters"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/create_product_btn"
+        android:id="@+id/btn_create_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/ButtonBlack"
