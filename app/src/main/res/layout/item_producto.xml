@@ -47,14 +47,6 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
-            android:id="@+id/productCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Categoría"
-            app:layout_constraintEnd_toEndOf="@id/productPrice"
-            app:layout_constraintTop_toBottomOf="@id/productPrice"/>
-
-        <TextView
             android:id="@+id/productCode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
