@@ -68,7 +68,7 @@
             android:id="@+id/stockLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Stock"
+            android:text="Stock"
             app:layout_constraintStart_toStartOf="@id/productName"
             app:layout_constraintBottom_toBottomOf="@id/productImage"/>
 
@@ -86,7 +86,7 @@
             android:id="@+id/sellButton"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            tools:text="Vender"
+            android:text="Vender"
             style="@style/ButtonBlack"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
