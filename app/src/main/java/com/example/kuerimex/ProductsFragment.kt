@@ -11,6 +11,7 @@ import android.view.ViewParent
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +20,8 @@ import com.example.kuerimex.databinding.FragmentProductsBinding
 import kotlinx.coroutines.launch
 import kotlin.collections.emptyList
 
-class ProductAdapter(private val products: List<ProductRequest>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
+class ProductAdapter(private val products: List<Product>, private val onProductClick: (Int) -> Unit)
+    : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
     class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val productName: TextView
         val productPrice: TextView
@@ -54,6 +56,18 @@ class ProductAdapter(private val products: List<ProductRequest>) : RecyclerView.
         holder.productDetails.text = product.descripcion
         holder.productStock.text = "${product.stock} unidades"
         holder.productImage.load(product.imagen_url)
+
+        holder.itemView.setOnClickListener {
+
+            onProductClick(product.id)
+            val activity = holder.itemView.context as AppCompatActivity
+            val dialog = ViewProduct.newInstance(product)
+
+            dialog.show(
+                activity.supportFragmentManager,
+                "view_product"
+            )
+        }
     }
 
     override fun getItemCount(): Int = products.size
@@ -103,9 +117,11 @@ class ProductsFragment : Fragment() {
 
                 if (response.isSuccessful) {
 
-                    val productos = response.body() ?: emptyList<ProductRequest>()
+                    val productos = response.body() ?: emptyList<Product>()
 
-                    rv.adapter = ProductAdapter(productos)
+                    rv.adapter = ProductAdapter(productos) { id ->
+                        obtenerProducto(id)
+                    }
 
                 }
 
@@ -114,4 +130,33 @@ class ProductsFragment : Fragment() {
             }
         }
     }
+
+    private fun obtenerProducto(id: Int){
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val response = RetrofitInstance.api.obtenerProducto(id)
+
+                if (response.isSuccessful) {
+
+                    val producto = response.body()
+
+                    if (producto != null) {
+
+                        val dialog =
+                            ViewProduct.newInstance(producto)
+
+                        dialog.show(
+                            parentFragmentManager,
+                            "view_product"
+                        )
+                    }
+                }
+
+            } catch (e: Exception) {
+                Log.e("API_ERROR", e.toString())
+            }
+        }
+    }
+
+
 }
