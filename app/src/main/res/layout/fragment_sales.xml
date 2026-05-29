@@ -5,9 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".ProductsFragment"
-    android:fitsSystemWindows="true">
+    android:gravity="top"
+    tools:context=".ProductsFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,7 +27,6 @@
         android:clipToPadding="false"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
-        android:paddingBottom="12dp"
         tools:listitem="@layout/item_sales" />
 
     <com.google.android.material.card.MaterialCardView
@@ -39,6 +37,7 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
         app:strokeColor="@color/gold"
+        android:backgroundTint="@color/transparent"
         app:strokeWidth="3dp">
 
         <LinearLayout
@@ -53,8 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="Total: "
                 android:textSize="18sp"
-                android:paddingEnd="5dp"
-                android:textColor="@color/black" />
+                android:paddingEnd="5dp" />
 
             <TextView
                 android:id="@+id/total_cart"
