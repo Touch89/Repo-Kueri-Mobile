@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import coil.load
 import com.example.kuerimex.databinding.DialogViewProductBinding
 
@@ -12,6 +13,7 @@ class ViewProduct : DialogFragment() {
 
     private var _binding: DialogViewProductBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: SalesViewModel by activityViewModels()
     private lateinit var product: Product
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +51,11 @@ class ViewProduct : DialogFragment() {
             }
 
             closeButton.setOnClickListener {
+                dismiss()
+            }
+
+            binding.sellButton.setOnClickListener {
+                viewModel.addToCart(product)
                 dismiss()
             }
         }

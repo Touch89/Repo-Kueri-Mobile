@@ -11,7 +11,9 @@ import android.view.ViewParent
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,8 +22,11 @@ import com.example.kuerimex.databinding.FragmentProductsBinding
 import kotlinx.coroutines.launch
 import kotlin.collections.emptyList
 
-class ProductAdapter(private val products: List<Product>, private val onProductClick: (Int) -> Unit)
+class ProductAdapter(private val products: List<Product>,
+                     private val viewModel: SalesViewModel,
+                     private val onProductClick: (Int) -> Unit)
     : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
+
     class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val productName: TextView
         val productPrice: TextView
@@ -30,6 +35,8 @@ class ProductAdapter(private val products: List<Product>, private val onProductC
         val productStock: TextView
         val productImage: ImageView
 
+        val sellButton: Button
+
         init {
             productName = view.findViewById(R.id.productName)
             productPrice = view.findViewById(R.id.productPrice)
@@ -37,6 +44,7 @@ class ProductAdapter(private val products: List<Product>, private val onProductC
             productDetails = view.findViewById(R.id.productDetails)
             productStock = view.findViewById(R.id.productStock)
             productImage = view.findViewById(R.id.productImage)
+            sellButton = view.findViewById(R.id.sellButton)
         }
     }
 
@@ -68,6 +76,14 @@ class ProductAdapter(private val products: List<Product>, private val onProductC
                 "view_product"
             )
         }
+
+        holder.sellButton.setOnClickListener {
+            viewModel.addToCart(product)
+
+            Toast.makeText(holder.itemView.context,
+                "${product.nombre} agregado al carrito",
+                Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int = products.size
@@ -77,6 +93,7 @@ class ProductAdapter(private val products: List<Product>, private val onProductC
 class ProductsFragment : Fragment() {
     private var _binding: FragmentProductsBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: SalesViewModel by activityViewModels()
 
     private lateinit var rv: RecyclerView
 
@@ -119,7 +136,7 @@ class ProductsFragment : Fragment() {
 
                     val productos = response.body() ?: emptyList<Product>()
 
-                    rv.adapter = ProductAdapter(productos) { id ->
+                    rv.adapter = ProductAdapter(productos, viewModel) { id ->
                         obtenerProducto(id)
                     }
 
