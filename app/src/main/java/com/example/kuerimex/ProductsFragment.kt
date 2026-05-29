@@ -7,76 +7,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.example.kuerimex.databinding.FragmentProductsBinding
 import kotlinx.coroutines.launch
 import kotlin.collections.emptyList
 
-class ProductAdapter(private val products: List<Product>, private val onProductClick: (Int) -> Unit)
-    : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
-    class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val productName: TextView
-        val productPrice: TextView
-        val productCode: TextView
-        val productDetails: TextView
-        val productStock: TextView
-        val productImage: ImageView
-
-        init {
-            productName = view.findViewById(R.id.productName)
-            productPrice = view.findViewById(R.id.productPrice)
-            productCode = view.findViewById(R.id.productCode)
-            productDetails = view.findViewById(R.id.productDetails)
-            productStock = view.findViewById(R.id.productStock)
-            productImage = view.findViewById(R.id.productImage)
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        val view = LayoutInflater.from(parent.context).
-        inflate(R.layout.item_producto, parent, false)
-
-        return ProductViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val product = products[position]
-
-        holder.productName.text = product.nombre
-        holder.productPrice.text = "$${product.precio}"
-        holder.productCode.text = "SKU: ${product.sku}"
-        holder.productDetails.text = product.descripcion
-        holder.productStock.text = "${product.stock} unidades"
-        holder.productImage.load(product.imagen_url)
-
-        holder.itemView.setOnClickListener {
-
-            onProductClick(product.id)
-            val activity = holder.itemView.context as AppCompatActivity
-            val dialog = ViewProduct.newInstance(product)
-
-            dialog.show(
-                activity.supportFragmentManager,
-                "view_product"
-            )
-        }
-    }
-
-    override fun getItemCount(): Int = products.size
-
-}
-
 class ProductsFragment : Fragment() {
     private var _binding: FragmentProductsBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: SalesViewModel by activityViewModels()
 
     private lateinit var rv: RecyclerView
 
@@ -106,6 +52,12 @@ class ProductsFragment : Fragment() {
             val intent = Intent(requireContext(), CreateProduct::class.java)
             startActivity(intent)
         }
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->val insets = windowInsets.getInsets(
+            WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(top = insets.top)
+            WindowInsetsCompat.CONSUMED
+        }
     }
 
     private fun obtenerProductos(){
@@ -119,7 +71,7 @@ class ProductsFragment : Fragment() {
 
                     val productos = response.body() ?: emptyList<Product>()
 
-                    rv.adapter = ProductAdapter(productos) { id ->
+                    rv.adapter = ProductAdapter(productos, viewModel) { id ->
                         obtenerProducto(id)
                     }
 

@@ -104,6 +104,16 @@
             app:layout_constraintTop_toBottomOf="@id/product_stock"
             tools:text="Descripción completa del producto blablablablablalblalalv" />
 
+        <Button
+            android:id="@+id/sell_button"
+            style="@style/ButtonBlack"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vender"
+            app:layout_constraintTop_toBottomOf="@id/product_details" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
