@@ -15,14 +15,17 @@
 
         <TextView
             android:id="@+id/product_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:paddingBottom="12dp"
             android:textColor="@color/gold"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/close_button"
             tools:text="Nombre del producto"/>
 
         <ImageButton
@@ -47,14 +50,17 @@
 
         <TextView
             android:id="@+id/product_sku"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/product_image"
+            app:layout_constraintEnd_toStartOf="@id/product_price"
             tools:text="SKU: 00000" />
 
         <TextView
@@ -96,10 +102,11 @@
 
         <TextView
             android:id="@+id/product_details"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textSize="18sp"
+            android:maxLines="6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/product_stock"
             tools:text="Descripción completa del producto blablablablablalblalalv" />

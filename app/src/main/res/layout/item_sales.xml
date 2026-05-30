@@ -28,11 +28,14 @@
             android:id="@+id/product_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textStyle="bold"
             android:textSize="18sp"
             tools:text="Nombre del producto"
             app:layout_constraintStart_toEndOf="@id/product_image"
             app:layout_constraintTop_toTopOf="@id/product_image"
+            app:layout_constraintEnd_toStartOf="@id/product_quantity"
             android:layout_marginStart="12dp"/>
 
         <TextView
@@ -41,6 +44,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/product_name"
             app:layout_constraintTop_toBottomOf="@id/product_name"
+            app:layout_constraintEnd_toStartOf="@id/minus_button"
             tools:text="SKU: KRM-001" />
 
         <TextView
@@ -53,13 +57,16 @@
 
         <TextView
             android:id="@+id/product_price"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textColor="@color/gold"
             android:textStyle="bold"
             android:layout_marginStart="5dp"
             app:layout_constraintStart_toEndOf="@+id/subtotal"
             app:layout_constraintTop_toBottomOf="@+id/product_code"
+            app:layout_constraintEnd_toStartOf="@id/minus_button"
             tools:text="$00.00" />
 
         <TextView
