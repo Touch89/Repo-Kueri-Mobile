@@ -120,7 +120,7 @@ class CreateProduct : AppCompatActivity() {
 
     fun crearProducto() {
 
-        val producto = ProductRequest(
+        val producto = ProductCreate(
             nombre = nameInputLayout.text.toString(),
             descripcion = descInputLayout.text.toString(),
             imagen_url = imgInputLayout.text.toString(),

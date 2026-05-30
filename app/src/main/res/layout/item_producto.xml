@@ -28,6 +28,8 @@
             android:id="@+id/productName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textStyle="bold"
             android:textSize="18sp"
             tools:text="Nombre del producto"
@@ -59,10 +61,12 @@
             android:id="@+id/productDetails"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
             tools:text="Descripción del producto"
             app:layout_constraintStart_toStartOf="@id/productName"
             app:layout_constraintTop_toBottomOf="@id/productCode"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toStartOf="@id/sellButton"/>
 
         <TextView
             android:id="@+id/stockLabel"
@@ -74,12 +78,15 @@
 
         <TextView
             android:id="@+id/productStock"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textColor="#2E7D32"
             tools:text="0 unidades"
             app:layout_constraintStart_toEndOf="@id/stockLabel"
             app:layout_constraintBaseline_toBaselineOf="@id/stockLabel"
+            app:layout_constraintEnd_toStartOf="@id/sellButton"
             android:layout_marginStart="6dp"/>
 
         <Button

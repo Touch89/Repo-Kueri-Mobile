@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:fitsSystemWindows="true">
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="10dp">
+        android:paddingHorizontal="10dp"
+        android:paddingTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,8 +22,8 @@
             android:layout_marginBottom="12dp">
 
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="@color/black"/>
 
             <LinearLayout
@@ -35,13 +35,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Inventario"
-                    android:textStyle="bold"/>
+                    android:text="Inventario"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="SISTEMA POS"/>
+                    android:text="SISTEMA POS"/>
 
             </LinearLayout>
 
@@ -50,23 +51,23 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="NUEVA VENTA"
-                app:icon="@drawable/outline_add_24"
-                app:iconGravity="textStart"
-                android:layout_marginEnd="12dp"
-                android:backgroundTint="#d4af37"
-                android:textColor="?attr/colorOnSurface"
-                app:iconTint="?attr/colorOnSurface"/>
+<!--            <Button-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                tools:text="NUEVA VENTA"-->
+<!--                app:icon="@drawable/outline_add_24"-->
+<!--                app:iconGravity="textStart"-->
+<!--                android:layout_marginEnd="12dp"-->
+<!--                android:backgroundTint="#d4af37"-->
+<!--                android:textColor="?attr/colorOnSurface"-->
+<!--                app:iconTint="?attr/colorOnSurface"/>-->
 
-            <ImageButton
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/outline_person_outline_24"
-                app:backgroundTint="@android:color/transparent"
-                app:tint="?attr/colorOnSurface"/>
+<!--            <ImageButton-->
+<!--                android:layout_width="48dp"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:src="@drawable/outline_person_outline_24"-->
+<!--                app:backgroundTint="@android:color/transparent"-->
+<!--                app:tint="?attr/colorOnSurface"/>-->
 
         </LinearLayout>
 
@@ -159,7 +160,7 @@
                         android:layout_height="wrap_content"
                         app:drawableStartCompat="@drawable/outline_person_outline_24"
                         app:drawableTint="?attr/colorOnSurface"
-                        tools:text="Alertas"
+                        tools:text="No. ventas"
                         android:drawablePadding="6dp"/>
 
                     <TextView
@@ -176,67 +177,67 @@
         </LinearLayout>
 
         <SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:queryHint="Buscar por nombre o SKU"/>
     </LinearLayout>
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp">
+<!--    <HorizontalScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingStart="10dp"-->
+<!--        android:paddingEnd="10dp">-->
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content">-->
 
-            <Button
-                style="@style/ButtonBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="todos" />
+<!--            <Button-->
+<!--                style="@style/ButtonBlack"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                tools:text="todos" />-->
 
-            <Space
-                android:layout_width="8dp"
-                android:layout_height="wrap_content"/>
+<!--            <Space-->
+<!--                android:layout_width="8dp"-->
+<!--                android:layout_height="wrap_content"/>-->
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/ButtonBlack"
-                tools:text="carteras" />
+<!--            <Button-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                style="@style/ButtonBlack"-->
+<!--                tools:text="carteras" />-->
 
-            <Space
-                android:layout_width="8dp"
-                android:layout_height="wrap_content"/>
+<!--            <Space-->
+<!--                android:layout_width="8dp"-->
+<!--                android:layout_height="wrap_content"/>-->
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="bolsas"
-                style="@style/ButtonBlack"/>
+<!--            <Button-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                tools:text="bolsas"-->
+<!--                style="@style/ButtonBlack"/>-->
 
-            <Space
-                android:layout_width="8dp"
-                android:layout_height="wrap_content"/>
+<!--            <Space-->
+<!--                android:layout_width="8dp"-->
+<!--                android:layout_height="wrap_content"/>-->
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="cinturones"
-                style="@style/ButtonBlack"/>
+<!--            <Button-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                tools:text="cinturones"-->
+<!--                style="@style/ButtonBlack"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-    </HorizontalScrollView>
+<!--    </HorizontalScrollView>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productsRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="12dp"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
         tools:listitem="@layout/item_producto"/>
