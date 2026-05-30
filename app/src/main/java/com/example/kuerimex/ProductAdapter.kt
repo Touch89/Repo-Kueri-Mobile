@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 
-class ProductAdapter(private val products: List<Product>,
+class ProductAdapter(private var products: List<Product>,
                      private val viewModel: SalesViewModel,
                      private val onProductClick: (Int) -> Unit)
     : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
@@ -76,5 +76,10 @@ class ProductAdapter(private val products: List<Product>,
     }
 
     override fun getItemCount(): Int = products.size
+
+    fun updateList(newList: List<Product>){
+        this.products = newList
+        notifyDataSetChanged()
+    }
 
 }
