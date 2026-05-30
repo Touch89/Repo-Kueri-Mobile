@@ -21,6 +21,9 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: SalesViewModel by activityViewModels()
 
+    private var listProducts: List<Product> = emptyList()
+    private lateinit var adapter: ProductAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,6 +37,7 @@ class HomeFragment : Fragment() {
 
         binding.productsRecycler.layoutManager = LinearLayoutManager(requireContext())
         obtenerProductos()
+        configurarBuscador()
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->val insets = windowInsets.getInsets(
             WindowInsetsCompat.Type.systemBars())
@@ -51,11 +55,12 @@ class HomeFragment : Fragment() {
 
                 if (response.isSuccessful) {
 
-                    val productos = response.body() ?: emptyList<Product>()
+                    listProducts = response.body() ?: emptyList<Product>()
 
-                    binding.productsRecycler.adapter = ProductAdapter(productos, viewModel) { id ->
+                    adapter = ProductAdapter(listProducts, viewModel) { id ->
                         obtenerProducto(id)
                     }
+                    binding.productsRecycler.adapter = adapter
                 }
 
             } catch (e: Exception) {
@@ -89,6 +94,32 @@ class HomeFragment : Fragment() {
                 Log.e("API_ERROR", e.toString())
             }
         }
+    }
+
+    private fun configurarBuscador(){
+        binding.searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(searchText: String?): Boolean {
+                filtrarProductos(searchText)
+                return true
+            }
+        })
+    }
+
+    private fun filtrarProductos(query: String?) {
+        val filteredList = if (query.isNullOrEmpty()) {
+            listProducts
+        } else {
+            listProducts.filter { product ->
+                product.nombre.contains(query, ignoreCase = true) ||
+                        product.sku.contains(query, ignoreCase = true)
+            }
+        }
+
+        adapter.updateList(filteredList)
     }
 
     override fun onDestroyView() {
