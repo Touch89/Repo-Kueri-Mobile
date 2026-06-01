@@ -7,5 +7,6 @@ data class Pedido(
 data class PedidoResponse(
     val id: Int,
     val precio_total: Double,
-    val estado: String
+    val estado: String,
+    val fecha_creación: String
 )

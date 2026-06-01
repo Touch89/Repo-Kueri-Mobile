@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="top"
-    tools:context=".ProductsFragment">
+    tools:context=".CartFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,7 +35,6 @@
         android:layout_margin="8dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
         app:strokeColor="@color/gold"
         android:backgroundTint="@color/transparent"
         app:strokeWidth="3dp">

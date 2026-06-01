@@ -18,6 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.kuerimex.databinding.FragmentCartBinding
 import com.example.kuerimex.databinding.FragmentSalesBinding
 import kotlinx.coroutines.launch
 
@@ -90,14 +91,14 @@ class CartAdapter(private var cartItems: List<CartItem>, private val viewModel: 
 
 class CartFragment : Fragment() {
     private val viewModel: CartViewModel by activityViewModels()
-    private var _binding: FragmentSalesBinding? = null
+    private var _binding: FragmentCartBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSalesBinding.inflate(inflater,container,false)
+        _binding = FragmentCartBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -113,7 +114,7 @@ class CartFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.cartItems.collect { cartItems ->
                 adapter.updateItems(cartItems)
-                binding.totalCart.text = "Total: $${viewModel.calculateTotal()}"
+                binding.totalCart.text = "$${viewModel.calculateTotal()}"
             }
         }
 

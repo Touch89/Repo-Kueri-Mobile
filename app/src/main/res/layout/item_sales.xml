@@ -29,9 +29,10 @@
             android:id="@+id/sale_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/sale_id"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="2026-06-01T18:31:17.138028"/>
+            tools:text="01/06/2026 18:31"/>
 
         <TextView
             android:id="@+id/total"

@@ -12,12 +12,12 @@
         android:title="Productos"/>
 
     <item
-        android:id="@+id/sales_fragment"
+        android:id="@+id/cart_fragment"
         android:icon="@drawable/baseline_shopping_cart_24"
         android:title="Carrito"/>
 
     <item
-        android:id="@+id/profile_fragment"
+        android:id="@+id/sales_fragment"
         android:icon="@drawable/baseline_sell_24"
         android:title="Ventas"/>
 </menu>

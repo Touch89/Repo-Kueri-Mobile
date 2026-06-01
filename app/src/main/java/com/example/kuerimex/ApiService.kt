@@ -5,6 +5,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -25,4 +26,9 @@ interface ApiService {
     suspend fun crearPedidoFisico(
         @Body pedido: Pedido
     ): Response<PedidoResponse>
+
+    @GET("pedidos/")
+    suspend fun obtenerVentas(
+        @Query("tipo") tipo: String = "físico"
+    ): Response<List<PedidoResponse>>
 }
