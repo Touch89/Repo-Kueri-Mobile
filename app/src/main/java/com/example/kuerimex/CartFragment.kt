@@ -154,6 +154,9 @@ class CartFragment : Fragment() {
 
                 if (response.isSuccessful) {
 
+                    val itemsVendidos = viewModel.cartItems.value
+                    viewModel.registrarVentaExitosa(itemsVendidos)
+
                     val pedidoCreado = response.body()
                     Toast.makeText(requireContext(),
                         "Venta realizada con éxito",

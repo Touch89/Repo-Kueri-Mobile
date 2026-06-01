@@ -3,6 +3,7 @@ package com.example.kuerimex
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class CartViewModel : ViewModel() {
     // Lista del carrito
@@ -70,4 +71,25 @@ class CartViewModel : ViewModel() {
         _cartItems.value = emptyList()
     }
 
+    /* Información para home */
+    private val _totalProductsSold = MutableStateFlow(0)
+    var totalProductsSold: StateFlow<Int> = _totalProductsSold.asStateFlow()
+
+    private val _totalSalesCount = MutableStateFlow(0)
+    var totalSalesCount: StateFlow<Int> = _totalSalesCount.asStateFlow()
+
+    private val _totalRevenue = MutableStateFlow(0.0)
+    var totalRevenue: StateFlow<Double> = _totalRevenue.asStateFlow()
+
+    fun registrarVentaExitosa(items: List<CartItem>) {
+        var subtotal = 0.0
+        var unidades = 0
+        items.forEach { item ->
+            subtotal += item.product.precio * item.quantity
+            unidades += item.quantity
+        }
+        _totalProductsSold.value += unidades
+        _totalRevenue.value += subtotal
+        _totalSalesCount.value += 1
+    }
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -25,6 +26,11 @@ class HomeFragment : Fragment() {
 
     private var listProducts: List<Product> = emptyList()
     private lateinit var adapter: ProductAdapter
+
+    private lateinit var totalProducts: TextView
+    private lateinit var totalValue: TextView
+    private lateinit var totalSales: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +51,28 @@ class HomeFragment : Fragment() {
             WindowInsetsCompat.Type.systemBars())
             view.updatePadding(top = insets.top)
             WindowInsetsCompat.CONSUMED
+        }
+
+        totalProducts = view.findViewById(R.id.total_products)
+        totalValue = view.findViewById(R.id.total_value)
+        totalSales = view.findViewById(R.id.total_sales)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            launch {
+                viewModel.totalProductsSold.collect { total ->
+                    totalProducts.text = total.toString()
+                }
+            }
+            launch {
+                viewModel.totalRevenue.collect { total ->
+                    totalValue.text = String.format("%.2f", total)
+                }
+            }
+            launch {
+                viewModel.totalSalesCount.collect { total ->
+                    totalSales.text = total.toString()
+                }
+            }
         }
     }
 
