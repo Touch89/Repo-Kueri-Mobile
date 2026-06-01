@@ -51,17 +51,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
 
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                tools:text="NUEVA VENTA"-->
-<!--                app:icon="@drawable/outline_add_24"-->
-<!--                app:iconGravity="textStart"-->
-<!--                android:layout_marginEnd="12dp"-->
-<!--                android:backgroundTint="#d4af37"-->
-<!--                android:textColor="?attr/colorOnSurface"-->
-<!--                app:iconTint="?attr/colorOnSurface"/>-->
-
 <!--            <ImageButton-->
 <!--                android:layout_width="48dp"-->
 <!--                android:layout_height="48dp"-->
@@ -183,55 +172,21 @@
             android:queryHint="Buscar por nombre o SKU"/>
     </LinearLayout>
 
-<!--    <HorizontalScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:paddingStart="10dp"-->
-<!--        android:paddingEnd="10dp">-->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:scrollbars="none">
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content">-->
+        <LinearLayout
+            android:id="@+id/category_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-<!--            <Button-->
-<!--                style="@style/ButtonBlack"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                tools:text="todos" />-->
+        </LinearLayout>
 
-<!--            <Space-->
-<!--                android:layout_width="8dp"-->
-<!--                android:layout_height="wrap_content"/>-->
-
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                style="@style/ButtonBlack"-->
-<!--                tools:text="carteras" />-->
-
-<!--            <Space-->
-<!--                android:layout_width="8dp"-->
-<!--                android:layout_height="wrap_content"/>-->
-
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                tools:text="bolsas"-->
-<!--                style="@style/ButtonBlack"/>-->
-
-<!--            <Space-->
-<!--                android:layout_width="8dp"-->
-<!--                android:layout_height="wrap_content"/>-->
-
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                tools:text="cinturones"-->
-<!--                style="@style/ButtonBlack"/>-->
-
-<!--        </LinearLayout>-->
-
-<!--    </HorizontalScrollView>-->
+    </HorizontalScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productsRecycler"

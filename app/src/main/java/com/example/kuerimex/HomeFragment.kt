@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -13,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kuerimex.databinding.FragmentHomeBinding
+import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -61,6 +63,8 @@ class HomeFragment : Fragment() {
                         obtenerProducto(id)
                     }
                     binding.productsRecycler.adapter = adapter
+
+                    generarBotonesCategorias()
                 }
 
             } catch (e: Exception) {
@@ -119,6 +123,46 @@ class HomeFragment : Fragment() {
             }
         }
 
+        adapter.updateList(filteredList)
+    }
+
+    private fun generarBotonesCategorias(){
+        binding.categoryFilter.removeAllViews()
+
+        // boton para todos los productos
+        val categorias = mutableListOf("todos")
+        categorias.addAll(listProducts.map { it.categoria }.distinct().sorted())
+
+        // generar botones para cada categoria
+        for (categoria in categorias){
+            val contextThemeWrapper = android.view.ContextThemeWrapper(requireContext(), R.style.ButtonBlack)
+            val button = MaterialButton(contextThemeWrapper)
+
+            button.text = categoria
+            button.setAllCaps(false)
+
+            // margenes
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.setMargins(0, 0, 16, 0)
+            button.layoutParams = params
+
+            button.setOnClickListener {
+                filtrarPorCategorias(categoria)
+            }
+
+            binding.categoryFilter.addView(button)
+        }
+    }
+
+    private fun filtrarPorCategorias(categoria: String){
+        val filteredList = if (categoria == "todos") {
+            listProducts
+        } else {
+            listProducts.filter { it.categoria == categoria }
+        }
         adapter.updateList(filteredList)
     }
 
