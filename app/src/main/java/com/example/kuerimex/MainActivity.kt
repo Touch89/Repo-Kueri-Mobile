@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home_fragment -> HomeFragment()
                 R.id.products_fragment -> ProductsFragment()
                 R.id.sales_fragment -> CartFragment()
-                R.id.profile_fragment -> ProfileFragment()
+                R.id.profile_fragment -> SalesFragment()
                 else -> null
             }
 

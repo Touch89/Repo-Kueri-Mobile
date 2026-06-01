@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.kuerimex.databinding.FragmentProfileBinding
 
-class ProfileFragment : Fragment() {
+class SalesFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
