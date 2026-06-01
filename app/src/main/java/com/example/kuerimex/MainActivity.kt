@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             val fragment = when(item.itemId){
                 R.id.home_fragment -> HomeFragment()
                 R.id.products_fragment -> ProductsFragment()
-                R.id.sales_fragment -> SalesFragment()
+                R.id.sales_fragment -> CartFragment()
                 R.id.profile_fragment -> ProfileFragment()
                 else -> null
             }

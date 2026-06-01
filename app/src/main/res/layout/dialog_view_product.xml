@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:textColor="@color/gold_dark"
+            android:textColor="@color/gold"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/product_sku"
@@ -90,7 +90,7 @@
 
         <TextView
             android:id="@+id/product_stock"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textColor="#2E7D32"
@@ -98,7 +98,20 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/stockLabel"
             app:layout_constraintTop_toBottomOf="@id/product_sku"
+            app:layout_constraintEnd_toStartOf="@id/product_category"
             tools:text="0 unidades"/>
+
+        <TextView
+            android:id="@+id/product_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/gold_dark"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/product_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Categoría"/>
 
         <TextView
             android:id="@+id/product_details"

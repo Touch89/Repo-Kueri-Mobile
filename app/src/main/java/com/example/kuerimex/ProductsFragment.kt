@@ -22,7 +22,7 @@ import kotlin.collections.emptyList
 class ProductsFragment : Fragment() {
     private var _binding: FragmentProductsBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: SalesViewModel by activityViewModels()
+    private val viewModel: CartViewModel by activityViewModels()
 
     private lateinit var rv: RecyclerView
 

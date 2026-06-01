@@ -19,7 +19,7 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: SalesViewModel by activityViewModels()
+    private val viewModel: CartViewModel by activityViewModels()
 
     private var listProducts: List<Product> = emptyList()
     private lateinit var adapter: ProductAdapter

@@ -11,7 +11,8 @@ data class Product(
     val imagen_url: String,
     val precio: Float,
     val sku: String,
-    val stock: Int
+    val stock: Int,
+    val categoria: String
 ) : Parcelable
 
 @Parcelize
@@ -21,5 +22,11 @@ data class ProductCreate(
     val imagen_url: String,
     val precio: Float,
     val sku: String,
-    val stock: Int
+    val stock: Int,
+    val categoria: String
 ) : Parcelable
+
+data class ProductoEnPedido(
+    val id_producto: Int,
+    val cantidad: Int
+)

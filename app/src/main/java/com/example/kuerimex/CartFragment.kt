@@ -1,6 +1,7 @@
 package com.example.kuerimex
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +21,7 @@ import coil.load
 import com.example.kuerimex.databinding.FragmentSalesBinding
 import kotlinx.coroutines.launch
 
-class CartAdapter(private var cartItems: List<CartItem>, private val viewModel: SalesViewModel)
+class CartAdapter(private var cartItems: List<CartItem>, private val viewModel: CartViewModel)
     : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     class CartViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -87,8 +88,8 @@ class CartAdapter(private var cartItems: List<CartItem>, private val viewModel: 
     }
 }
 
-class SalesFragment : Fragment() {
-    private val viewModel: SalesViewModel by activityViewModels()
+class CartFragment : Fragment() {
+    private val viewModel: CartViewModel by activityViewModels()
     private var _binding: FragmentSalesBinding? = null
     private val binding get() = _binding!!
 
@@ -138,9 +139,34 @@ class SalesFragment : Fragment() {
     }
 
     private fun enviarVenta() {
-        val request = SalesRequest(
-            items = viewModel.cartItems.value.map { CartItem(it.product, it.quantity) },
-            total = viewModel.calculateTotal()
-        )
+        val productsApi = viewModel.cartItems.value.map { cartItem ->
+            ProductoEnPedido(cartItem.product.id, cartItem.quantity)
+        }
+
+        val pedido = Pedido(productsApi)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+
+            try {
+
+                val response = RetrofitInstance.api.crearPedidoFisico(pedido)
+
+                if (response.isSuccessful) {
+
+                    val pedidoCreado = response.body()
+                    Toast.makeText(requireContext(),
+                        "Venta realizada con éxito",
+                        Toast.LENGTH_SHORT).show()
+
+                    viewModel.clearCart()
+                } else {
+                    val error = response.errorBody()?.string() ?: "Error desconocido"
+                    Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+                }
+
+            } catch (e: Exception) {
+                Log.e("API_ERROR", e.toString())
+            }
+        }
     }
 }

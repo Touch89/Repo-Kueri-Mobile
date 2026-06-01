@@ -34,6 +34,10 @@ class CreateProduct : AppCompatActivity() {
     private lateinit var skuLayout: TextInputLayout
     private lateinit var skuInputLayout: TextInputEditText
 
+    // category
+    private lateinit var categoryLayout: TextInputLayout
+    private lateinit var categoryInputLayout: TextInputEditText
+
     // send
     private lateinit var sendButton: Button
 
@@ -66,6 +70,10 @@ class CreateProduct : AppCompatActivity() {
         // sku
         skuLayout = findViewById(R.id.layout_sku)
         skuInputLayout = findViewById(R.id.txtbx_sku)
+
+        // category
+        categoryLayout = findViewById(R.id.layout_category)
+        categoryInputLayout = findViewById(R.id.txtbx_category)
 
         // button
         sendButton = findViewById(R.id.btn_create_product)
@@ -115,6 +123,13 @@ class CreateProduct : AppCompatActivity() {
             skuLayout.error = null
         }
 
+        if (categoryInputLayout.text.isNullOrEmpty()){
+            categoryLayout.error = "Este campo es obligatorio"
+            isValid = false
+        } else {
+            categoryLayout.error = null
+        }
+
         return isValid
     }
 
@@ -126,7 +141,8 @@ class CreateProduct : AppCompatActivity() {
             imagen_url = imgInputLayout.text.toString(),
             precio = priceInputLayout.text.toString().toFloat(),
             sku = skuInputLayout.text.toString(),
-            stock = 20
+            stock = 20,
+            categoria = categoryInputLayout.text.toString()
         )
 
         lifecycleScope.launch {

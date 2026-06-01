@@ -1,12 +1,10 @@
 package com.example.kuerimex
 
-import android.widget.Button
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class SalesViewModel : ViewModel() {
+class CartViewModel : ViewModel() {
     // Lista del carrito
     private val _cartItems = MutableStateFlow<List<CartItem>>(emptyList())
 

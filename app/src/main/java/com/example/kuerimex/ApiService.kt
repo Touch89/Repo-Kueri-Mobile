@@ -20,4 +20,9 @@ interface ApiService {
     suspend fun obtenerProducto(
         @Path("id_producto") idProducto: Int
     ): Response<Product>
+
+    @POST("pedidos/fisico")
+    suspend fun crearPedidoFisico(
+        @Body pedido: Pedido
+    ): Response<PedidoResponse>
 }

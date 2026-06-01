@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 
 class ProductAdapter(private var products: List<Product>,
-                     private val viewModel: SalesViewModel,
+                     private val viewModel: CartViewModel,
                      private val onProductClick: (Int) -> Unit)
     : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>(){
 

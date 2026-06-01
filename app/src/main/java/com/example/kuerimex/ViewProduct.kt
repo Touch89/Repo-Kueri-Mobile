@@ -13,7 +13,7 @@ class ViewProduct : DialogFragment() {
 
     private var _binding: DialogViewProductBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: SalesViewModel by activityViewModels()
+    private val viewModel: CartViewModel by activityViewModels()
     private lateinit var product: Product
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +42,7 @@ class ViewProduct : DialogFragment() {
             productSku.text = "SKU: ${product.sku}"
             productPrice.text = "$${product.precio}"
             productStock.text = "${product.stock} unidades"
+            productCategory.text = product.categoria
             productDetails.text = product.descripcion
 
             productImage.load(product.imagen_url) {
